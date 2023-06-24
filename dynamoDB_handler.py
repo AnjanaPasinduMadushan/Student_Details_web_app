@@ -64,21 +64,6 @@ def check_users(email, password):
                 KeyConditionExpression=Key('email').eq(email)
         )
     
-    # items = response['Items']
-    # if items:
-    #     fullname = items[0]['fullname']
-        
-    #     if password == items[0]['password']:
-                
-    #         return render_template("profile.html",fullname = fullname)
-            
-    #     errormsg = "Invalid Password!"
-    #     return render_template("login.html", errormsg = errormsg)
-    
-    # else:
-    #     errormsg2 = "Invalid E-mail!"
-    #     return render_template("login.html", errormsg2 = errormsg2)
-    
     return response
 
 # def get_item_from_user_table(reg):

@@ -37,13 +37,15 @@ def add_user():
 def check_user():
     data = request.form.to_dict()
     response = dynamodb.check_users(data['email'], data['password'])
-    items = response['Items']
+    items = response['Items'][0]
     if items:
-        fullname = items[0]['fullname']
         
-        if data['password'] == items[0]['password']:
+        #fullname = items['fullname']
+        
+        
+        if data['password'] == items['password']:
                 
-            return render_template("profile.html",fullname = fullname)
+            return render_template("profile.html", **items)
             
         errormsg = "Invalid Password!"
         return render_template("login.html", errormsg = errormsg)

@@ -59,25 +59,27 @@ def add_item_to_user_table(regno, fullname, email, password, degree, contact, in
     )
     return response
 
-def check_user(email, password):
+def check_users(email, password):
     response = UserTable.query(
                 KeyConditionExpression=Key('email').eq(email)
         )
     
-    items = response['Items']
-    if items:
-        name = items[0]['name']
+    # items = response['Items']
+    # if items:
+    #     fullname = items[0]['fullname']
         
-        if password == items[0]['password']:
+    #     if password == items[0]['password']:
                 
-            return render_template("profile.html",name = name)
+    #         return render_template("profile.html",fullname = fullname)
             
-        errormsg = "Invalid Password!"
-        return render_template("login.html", errormsg = errormsg)
+    #     errormsg = "Invalid Password!"
+    #     return render_template("login.html", errormsg = errormsg)
     
-    else:
-        errormsg2 = "Invalid E-mail!"
-        return render_template("login.html", errormsg2 = errormsg2)
+    # else:
+    #     errormsg2 = "Invalid E-mail!"
+    #     return render_template("login.html", errormsg2 = errormsg2)
+    
+    return response
 
 # def get_item_from_user_table(reg):
 #     #

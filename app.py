@@ -12,6 +12,11 @@ def root_route():
     # dynamodb.create_table()
     # return 'Table Created'
     return render_template("sign_up.html")
+    
+@app.route('/login')
+def login():    
+    return render_template('login.html')
+    
 
 @app.route('/sign_up', methods=['POST'])
 def add_user():
@@ -28,10 +33,25 @@ def add_user():
         'response': response
     }
 
-
-# def check_user():
-#   data = request.form.to_dict()
-#   dynamodb.check_user(data['email'], data['password'])
+@app.route('/check', methods=['POST'])
+def check_user():
+    data = request.form.to_dict()
+    response = dynamodb.check_users(data['email'], data['password'])
+    items = response['Items']
+    if items:
+        fullname = items[0]['fullname']
+        
+        if data['password'] == items[0]['password']:
+                
+            return render_template("profile.html",fullname = fullname)
+            
+        errormsg = "Invalid Password!"
+        return render_template("login.html", errormsg = errormsg)
+    
+    else:
+        errormsg2 = "Invalid E-mail!"
+        return render_template("login.html", errormsg2 = errormsg2)
+    
 
 
 #define port and host

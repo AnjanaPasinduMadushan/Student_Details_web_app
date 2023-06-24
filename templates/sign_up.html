@@ -8,19 +8,16 @@
   <form action="/sign_up" method="POST">
 
     <label for="regno">Registration No:</label>
-    <input type="number" id="regno" name="regno" required><br><br>
+    <input type="number" id="regno" name="regno"><br><br>
 
     <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname" required><br><br>
+    <input type="text" id="fullname" name="fullname"><br><br>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
+    <input type="email" id="email" name="email" disabled><br><br>
 
     <label for="degree">Degree Program:</label>
-    <select id="degree" name="degree" required>
+    <select id="degree" name="degree">
       <option value="">Select a degree program</option>
       <option value="Bsc Computer Science and engineering">Bsc Computer Science and engineering</option>
       <option value="Bsc Machinical engineering">Bsc Machinical engineering</option>
@@ -29,16 +26,16 @@
     </select><br><br>
 
     <label for="contact">Contact No:</label>
-    <input type="tel" id="contact" name="contact" required><br><br>
+    <input type="tel" id="contact" name="contact"><br><br>
 
     <label for="introduction">Introduction:</label>
-    <textarea id="introduction" name="introduction" required></textarea><br><br>
+    <textarea id="introduction" name="introduction"></textarea><br><br>
 
     <label for="gpa">Current GPA:</label>
-    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa" required><br><br>
+    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa"><br><br>
 
     <label for="skills">Skills:</label>
-    <textarea id="skills" name="skills" required></textarea><br><br>
+    <textarea id="skills" name="skills"></textarea><br><br>
 
     <input type="submit" value="Submit">
     

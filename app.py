@@ -53,8 +53,32 @@ def check_user():
     else:
         errormsg2 = "Invalid E-mail!"
         return render_template("login.html", errormsg2 = errormsg2)
+        
     
+@app.route('/profile/<int:rNo>', methods=["GET"])
+def get_movie(rNo):
+    response = dynamodb.get_item_from_Student_table(rNo)
+    
+    return response
+    
+    # users = response['items'][0]
+    
+    # if users:
+    #     return users
+    
+    # return { 'msg' : 'User not found!' }
+    
+    # if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        
+    #     if ('Item' in response):
+    #         return { 'Item': response['Item'] }
 
+    #     return { 'msg' : 'User not found!' }
+
+    # return {
+    #     'msg': 'Some error occured',
+    #     'response': response
+    # }
 
 #define port and host
 if __name__ == '__main__':

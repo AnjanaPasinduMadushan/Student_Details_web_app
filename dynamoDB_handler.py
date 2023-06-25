@@ -66,14 +66,19 @@ def check_users(email, password):
     
     return response
 
-# def get_item_from_user_table(reg):
-#     #
-#     response = MovieTable.get_item(
-#         Key = {
-#             'id': id
-#         },
-#         AttributesToGet = [
-#             'title','director'
-#         ]
-#     )
-#     return response
+def get_item_from_Student_table(regno):
+    #
+    # response = UserTable.get_item(
+    #     Key = {
+    #         'regno': regno
+    #     },
+    #     AttributesToGet = [
+    #         'regno', 'fullname', 'email', 'degree', 'contact', 'introduction', 'gpa', 'skills'
+    #     ]
+    # )
+    
+    response = UserTable.scan(
+                FilterExpression='regno = :regno',
+                ExpressionAttributeValues={':regno': {'N': str(regno)}}
+        )
+    return response

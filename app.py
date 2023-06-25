@@ -59,26 +59,22 @@ def check_user():
 def get_movie(rNo):
     response = dynamodb.get_item_from_Student_table(rNo)
     
-    return response
+    #return response
+    users = response['Items'][0]
     
-    # users = response['items'][0]
+    if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
     
-    # if users:
-    #     return users
-    
-    # return { 'msg' : 'User not found!' }
-    
-    # if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        if users:
+            return users
         
-    #     if ('Item' in response):
-    #         return { 'Item': response['Item'] }
+        return { 'msg' : 'User not found!' }
+    
+    return {
+        'msg': 'Some error occured',
+        'response': response
+    }
+    
 
-    #     return { 'msg' : 'User not found!' }
-
-    # return {
-    #     'msg': 'Some error occured',
-    #     'response': response
-    # }
 
 #define port and host
 if __name__ == '__main__':

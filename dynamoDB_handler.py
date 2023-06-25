@@ -79,6 +79,6 @@ def get_item_from_Student_table(regno):
     
     response = UserTable.scan(
                 FilterExpression='regno = :regno',
-                ExpressionAttributeValues={':regno': {'N': str(regno)}}
+                ExpressionAttributeValues={':regno': regno }
         )
     return response

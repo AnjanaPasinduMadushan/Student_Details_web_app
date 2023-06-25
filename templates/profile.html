@@ -5,7 +5,7 @@
 </head>
 <body>
   <h2>Profile</h2>
-  <form>
+  <form id="std_form">
 
     <label for="regno">Registration No:</label>
     <input type="number" id="regno" name="regno" value={{item.regno}}><br><br>
@@ -41,5 +41,52 @@
     
     
   </form>
+  
+  <script>
+    document.getElementById("std_form").addEventListener('submit', function(e){
+      e.preventDefault();
+      const regno = document.getElementById('regno').value;
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const degree = document.getElementById('degree').value;
+      const contact = document.getElementById('contact').value;
+      const introduction = document.getElementById('introduction').value;
+      const gpa = document.getElementById('gpa').value;
+      const skills = document.getElementById('skills').value;
+      
+      //Creating Object with inputs
+      const form_data = {
+        regno : regno,
+        fullname : fullname,
+        email : email,
+        degree : degree,
+        contact : contact,
+        introduction : introduction,
+        gpa : gpa,
+        skills : skills
+      }
+      
+      try{
+        // Send PUT request using fetch
+        fetch('/student/'+ regno, {
+            method: 'PUT',
+            body: JSON.stringify(form_data),//converting object into json
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        console.log(form_data);
+        console.log('PUT request successful');
+        alert('PUT request successful');
+        
+      }catch(error){
+        console.log(error);
+        alert(error);
+      }
+      
+    });
+  </script>
+  
 </body>
 </html>

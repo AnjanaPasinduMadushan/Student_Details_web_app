@@ -82,3 +82,51 @@ def get_item_from_Student_table(regno):
                 ExpressionAttributeValues={':regno': regno }
         )
     return response
+    
+def update_item_from_Student_table(data):
+    
+    response = UserTable.update_item(
+        Key = {
+               'email': data['email']
+            },
+            AttributeUpdates={
+                
+                'regno': {
+                   'Value'  : data['regno'],
+                   'Action' : 'PUT' 
+                },
+                'fullname': {
+                   'Value'  : data['fullname'],
+                   'Action' : 'PUT'
+                },
+                # 'email': {
+                #   'Value'  : data['email'],
+                #   'Action' : 'PUT' 
+                # },
+                'degree': {
+                   'Value'  : data['degree'],
+                   'Action' : 'PUT'
+                },
+                'contact': {
+                   'Value'  : data['contact'],
+                   'Action' : 'PUT'
+                },
+                'introduction': {
+                   'Value'  : data['introduction'],
+                   'Action' : 'PUT' 
+                },
+                'gpa': {
+                   'Value'  : data['gpa'],
+                   'Action' : 'PUT'
+                },
+                'skills': {
+                   'Value'  : data['skills'],
+                   'Action' : 'PUT' 
+                }
+                
+            },
+            
+            ReturnValues = "UPDATED_NEW"  # returns the new updated value
+    )
+        
+    return response

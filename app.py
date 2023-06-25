@@ -54,11 +54,13 @@ def check_user():
         errormsg2 = "Invalid E-mail!"
         return render_template("login.html", errormsg2 = errormsg2)
         
-@app.route('/update/<int:email>', methods=["PUT"])
-def update_user(email):
+@app.route('/student/<int:regno>', methods=["PUT"])
+def update_user(regno):
     data = request.get_json()
     
-    response = d
+    response = dynamodb.update_item_from_Student_table(data)
+    
+    return response
     
         
     

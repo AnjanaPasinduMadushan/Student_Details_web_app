@@ -65,7 +65,7 @@ def get_movie(rNo):
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
     
         if users:
-            return users
+            return render_template("profile-view.html", users = users)
         
         return { 'msg' : 'User not found!' }
     

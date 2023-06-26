@@ -66,9 +66,18 @@ def update_user(regno):
     
     response = dynamodb.update_item_from_Student_table(data)
     
-    return response
+    if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        return {
+            'msg'                : 'Updated successfully',
+            'ModifiedAttributes' : response['Attributes'],
+            'response'           : response['ResponseMetadata']
+        }
+
+    return {
+        'msg'      : 'Some error occured',
+        'response' : response
+    }  
     
-        
     
 @app.route('/profile/<int:rNo>', methods=["GET"])
 def get_movie(rNo):
@@ -85,8 +94,8 @@ def get_movie(rNo):
         except IndexError:
             
             #Out of index error
-            return users
-            #return {'msg' : 'User not found'}
+            error_reg = "There are not any student with this registration no"
+            return render_template("index.html", error_reg = error_reg)
     
         return {
             'msg': 'Some error occured',

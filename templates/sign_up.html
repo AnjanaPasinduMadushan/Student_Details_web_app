@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
   <title>Registration Form</title>
 </head>
+
 <body>
-  <h2>Registration</h2>
-  <form action="/sign_up" method="POST">
+  
+  <div id="body">
+  <div id="page_title">
+    <h2>REGISTRATION</h2>
+    <h3><a href="/login" class="already">
+    You already have an account? Login here.</a></h3>
+  </div>
+  
+  <form action="/sign_up" method="POST" id="sign_up">
 
     <label for="regno">Registration No:</label>
     <input type="number" id="regno" name="regno" required><br><br>
@@ -41,8 +50,7 @@
     <textarea id="skills" name="skills" required></textarea><br><br>
 
     <input type="submit" value="Submit">
-    
-    <a href="/login" class="already">You already have an account? Login here.</a>
   </form>
+  </div>
 </body>
 </html>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
   <title>Login Form</title>
 </head>
 <body>
   <center>{{msg}}</center>
-  <h2>Login Form</h2>
-  <form action="/check" method="POST">
+  <h2 id ="login_title"><center>Login Form</center></h2>
+  <div id="body_login">
+  <form action="/check" method="POST" id="login_form">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br><br>
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required><br><br>
 
-    <input type="submit" value="Login">
+    <button>Login</button>
   </form>
+  </div>
 </body>
 </html>

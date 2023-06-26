@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
   <title>Profile-Edit</title>
 </head>
 <body>
@@ -8,13 +9,13 @@
   <form id="std_form">
 
     <label for="regno">Registration No:</label>
-    <input type="number" id="regno" name="regno" value={{item.regno}}><br><br>
+    <input type="number" id="regno" name="regno" value={{item.regno}}><br>
 
     <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname" value={{item.fullname}}><br><br>
+    <input type="text" id="fullname" name="fullname" value={{item.fullname}}><br>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value={{item.email}} disabled><br><br>
+    <input type="email" id="email" name="email" value={{item.email}} disabled><br>
 
     <label for="degree">Degree Program:</label>
     <select id="degree" name="degree">
@@ -23,21 +24,21 @@
       <option value="Bsc Machinical engineering" {% if item.degree == 'Bsc Machinical engineering' %} selected {% endif %}>Bsc Machinical engineering</option>
       <option value="Bsc Civil engineering" {% if item.degree == 'Bsc Civil engineering' %} selected {% endif %}>Bsc Civil engineering</option>
       <option value="Bsc Electrical engineering" {% if item.degree == 'Bsc Electrical engineering' %} selected {% endif %}>Bsc Electrical engineering</option>
-    </select><br><br>
+    </select><br>
 
     <label for="contact">Contact No:</label>
-    <input type="tel" id="contact" name="contact" value={{item.contact}}><br><br>
+    <input type="tel" id="contact" name="contact" value={{item.contact}}><br>
 
     <label for="introduction">Introduction:</label>
-    <textarea id="introduction" name="introduction">{{item.introduction}}</textarea><br><br>
+    <textarea id="introduction" name="introduction">{{item.introduction}}</textarea><br>
 
     <label for="gpa">Current GPA:</label>
-    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa" value={{item.gpa}}><br><br>
+    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa" value={{item.gpa}}><br>
 
     <label for="skills">Skills:</label>
-    <textarea id="skills" name="skills">{{item.skills}}</textarea><br><br>
+    <textarea id="skills" name="skills">{{item.skills}}</textarea><br>
 
-    <input type="submit" value="Submit">
+    <button><center>Update</center></button>
     
     
   </form>

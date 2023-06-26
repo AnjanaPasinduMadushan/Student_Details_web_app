@@ -2,10 +2,15 @@
 <html>
 	<head>
 		<title>Profile-View</title>
+		<link rel="stylesheet" type="text/css" href="static/css/style.css">
+		
 	</head>
 	
 	<body>
-		<table id ="table">
+		
+		<h2 id="std_view">Student Profile View</h2>
+		<div id ="table">
+		<table>
 			<tr><th>Registration No</th><td>{{users.regno}}</td></tr>
 			<tr><th>Full Noame</th><td>{{users.fullname}}</td></tr>
 			<tr><th>Email</th><td>{{users.email}}</td></tr>
@@ -15,5 +20,6 @@
 			<tr><th>Current GPA</th><td>{{users.gpa}}</td></tr>
 			<tr><th>Skills</th><td>{{users.skills}}</td></tr>
 		</table>
+		</div>
 	</body>
 </html>

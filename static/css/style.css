@@ -121,7 +121,12 @@
     font-style: italic
   }
   
+  /*Profile_view*/
   #table {
-				margin: 0 auto; 
-				border-collapse: collapse; 
+				margin: 0 auto;  
 			}
+			
+
+ #std_view{
+   font-style: italic
+ }

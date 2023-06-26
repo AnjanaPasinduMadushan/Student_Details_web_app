@@ -17,7 +17,7 @@
   <form action="/sign_up" method="POST" id="sign_up">
 
     <label for="regno">Registration No:</label>
-    <input type="number" id="regno" name="regno" required><br><br>
+    <input type="number" id="regno" name="regno" min="1" max="9999" pattern="\d{4}" required><br><br>
 
     <label for="fullname">Full Name:</label>
     <input type="text" id="fullname" name="fullname" required><br><br>

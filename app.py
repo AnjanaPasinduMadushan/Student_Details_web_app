@@ -11,7 +11,7 @@ app = Flask(__name__)
 def root_route():
     # dynamodb.create_table()
     # return 'Table Created'
-    return render_template("sign_up.html")
+    return render_template("index.html")
     
 @app.route('/login')
 def login():    
@@ -69,10 +69,11 @@ def get_movie(rNo):
     response = dynamodb.get_item_from_Student_table(rNo)
     
     #return response
-    users = response['Items'][0]
+    users = response['Items']
     
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
     
+        users = users[0]
         if users:
             return render_template("profile-view.html", users = users)
         

@@ -45,13 +45,13 @@
   <script>
     document.getElementById("std_form").addEventListener('submit', function(e){
       e.preventDefault();
-      const regno = document.getElementById('regno').value;
+      const regno = parseInt(document.getElementById('regno').value);
       const fullname = document.getElementById('fullname').value;
       const email = document.getElementById('email').value;
       const degree = document.getElementById('degree').value;
       const contact = document.getElementById('contact').value;
       const introduction = document.getElementById('introduction').value;
-      const gpa = document.getElementById('gpa').value;
+      const gpa = parseInt(document.getElementById('gpa').value);
       const skills = document.getElementById('skills').value;
       
       //Creating Object with inputs

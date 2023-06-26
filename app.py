@@ -13,9 +13,15 @@ def root_route():
     # return 'Table Created'
     return render_template("index.html")
     
+
+    
 @app.route('/login')
 def login():    
     return render_template('login.html')
+    
+@app.route('/register')
+def register():    
+    return render_template('sign_up.html')
     
 
 @app.route('/sign_up', methods=['POST'])
@@ -66,23 +72,26 @@ def update_user(regno):
     
 @app.route('/profile/<int:rNo>', methods=["GET"])
 def get_movie(rNo):
-    response = dynamodb.get_item_from_Student_table(rNo)
-    
-    #return response
-    users = response['Items']
-    
-    if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
-    
-        users = users[0]
-        if users:
-            return render_template("profile-view.html", users = users)
+        response = dynamodb.get_item_from_Student_table(rNo)
+        users = response['Items']
+        try:
+            users = users[0]
         
-        return { 'msg' : 'User not found!' }
+            if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        
+                if users:
+                    return render_template("profile-view.html", users = users)
+            
+        except IndexError:
+            
+            #Out of index error
+            return users
+            #return {'msg' : 'User not found'}
     
-    return {
-        'msg': 'Some error occured',
-        'response': response
-    }
+        return {
+            'msg': 'Some error occured',
+            'response': response
+        }
     
 
 

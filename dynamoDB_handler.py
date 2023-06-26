@@ -43,27 +43,11 @@ def create_table():
 UserTable = dynamodb_resource.Table('users')#getting the table
 
 
-def check_regno(email):
-    response = UserTable.query(
-                KeyConditionExpression=Key('email').eq(email),
-                ScanIndexForward=True,
-                Limit=1
-        )
-    if 'Items' in response and len(response['Items']) > 0:
-        print(response['Items'][0]['regno'])
-        return response['Items'][0]['regno']
-        
-    else:
-        print('this')
-        return 0
-        
-
 def add_item_to_user_table(regno, fullname, email, password, degree, contact, introduction, gpa, skills):
     
-    check = check_regno(email)
     response = UserTable.put_item(
         Item = {
-            'regno'     : check+1,
+            'regno'     : regno,
             'fullname'  : fullname,
             'email' : email,
             'password'  : password,

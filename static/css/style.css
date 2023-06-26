@@ -93,6 +93,9 @@
  /*Profile.html*/
  #std_form {
     border: 1px solid;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 20px;
     border-color: black;
     display: flex;
     flex-direction: column;
@@ -113,3 +116,12 @@
   #std_form textarea{
       height: 50px;
   }
+  
+  #profile_title{
+    font-style: italic
+  }
+  
+  #table {
+				margin: 0 auto; 
+				border-collapse: collapse; 
+			}

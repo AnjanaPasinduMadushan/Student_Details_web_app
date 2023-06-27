@@ -49,10 +49,11 @@ def add_item_to_user_table(regno, fullname, email, password, degree, contact, in
     response_email = UserTable.query(
                 KeyConditionExpression=Key('email').eq(email)
         )
-        
-    response_email = response_email['Items'][0]['email']
-    if response_email == email:
-        return {'error':"This email is already exist"}
+    
+    if response_email['Items']:
+        existing_email = response_email['Items'][0]['email']
+        if existing_email == email:
+            return {'error': "This email already exists"}
     
     response = UserTable.put_item(
         Item = {

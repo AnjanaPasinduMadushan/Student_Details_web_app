@@ -32,6 +32,10 @@ def add_user():
     # calling below function to add user data
     response = dynamodb.add_item_to_user_table(int(data['regno']), data['fullname'], data['email'],
      data['password'], data['degree'], data['contact'], data['introduction'], data['gpa'], data['skills'])
+     
+    if 'error' in response:
+        error_msg = response['error']
+        return render_template('sign_up.html', error_msg=error_msg)
   
   # check whether response passed below condition
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
@@ -94,7 +98,7 @@ def update_user(regno):
     
     
 @app.route('/profile/<int:rNo>', methods=["GET"])
-def get_movie(rNo):
+def get_student(rNo):
     
     # calling below function to get student details according to the register number
         response = dynamodb.get_item_from_Student_table(rNo)

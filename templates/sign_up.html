@@ -49,6 +49,9 @@
     <label for="skills">Skills:</label>
     <textarea id="skills" name="skills" required></textarea><br><br>
 
+    {% if error_msg %}
+      <p class="error">{{ error_msg }}</p>
+    {% endif %}
     <input type="submit" value="Submit">
   </form>
   </div>

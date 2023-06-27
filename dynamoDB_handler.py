@@ -46,6 +46,14 @@ UserTable = dynamodb_resource.Table('users')#gobal variable for getting the tabl
 # function for adding new students to table
 def add_item_to_user_table(regno, fullname, email, password, degree, contact, introduction, gpa, skills):
     
+    response_email = UserTable.query(
+                KeyConditionExpression=Key('email').eq(email)
+        )
+        
+    response_email = response_email['Items'][0]['email']
+    if response_email == email:
+        return {'error':"This email is already exist"}
+    
     response = UserTable.put_item(
         Item = {
             'regno'     : regno,

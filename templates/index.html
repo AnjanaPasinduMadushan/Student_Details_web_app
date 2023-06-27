@@ -12,10 +12,15 @@
         </div>
         
         <div>
-            <h3><center>{{error_reg}}</center></h3>
+            <center>
+                {% if error_reg %}
+      <p class="error">{{ error_reg }}</p>
+    {% endif %}
+            </center>
+    
         </div>
         <h2><center>Search the Students</center></h2>
-        <form id="search_regno" methods="GET">
+        <form id="search_regno" method="GET">
             
             <label for="stdno"><h2>Registration No:</h2></label>
             <input type="number" id="stdno" name="stdno" min = "1" required>
@@ -46,7 +51,7 @@
             const stdno = stdnoInput.value;
             const url = `/profile/${stdno}`;
 
-            window.location.href = url; // Redirect to the desired URL 
+            window.location.href = url; 
         });
         </script>
         

@@ -54,7 +54,7 @@
       const degree = document.getElementById('degree').value;
       const contact = document.getElementById('contact').value;
       const introduction = document.getElementById('introduction').value;
-      const gpa = parseInt(document.getElementById('gpa').value);
+      const gpa = parseFloat(document.getElementById('gpa').value).toFixed(3);
       const skills = document.getElementById('skills').value;
       
       //Creating Object with inputs

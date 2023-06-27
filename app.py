@@ -15,25 +15,30 @@ def root_route():
     
 
     
-@app.route('/login')
+@app.route('/login') # decorator for login page
 def login():    
     return render_template('login.html')
     
-@app.route('/register')
+@app.route('/register') # decorator for sign up page
 def register():    
     return render_template('sign_up.html')
     
 
 @app.route('/sign_up', methods=['POST'])
 def add_user():
+    # Extract data from the form
     data = request.form.to_dict()
+    
+    # calling below function to add user data
     response = dynamodb.add_item_to_user_table(int(data['regno']), data['fullname'], data['email'],
      data['password'], data['degree'], data['contact'], data['introduction'], data['gpa'], data['skills'])
   
+  # check whether response passed below condition
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
         msg = "Registration Complete. Please Login to your account !"
         return render_template('login.html', msg = msg)
 
+    # if there is an error
     return {  
         'msg': 'Some error occcured',
         'response': response
@@ -41,12 +46,16 @@ def add_user():
 
 @app.route('/check', methods=['POST'])
 def check_user():
+    # Extract data from the form
     data = request.form.to_dict()
+    
+    #calling below function to check user exist
     response = dynamodb.check_users(data['email'], data['password'])
     items = response['Items']
+    
+    #if user exists with given email
     if items:
         
-        #fullname = items['fullname']
         item = items[0]
         
         if data['password'] == item['password']:
@@ -56,23 +65,28 @@ def check_user():
         errormsg = "Invalid Password!"
         return render_template("login.html", errormsg = errormsg)
     
+    #if user doesn't exist with given email
     else:
         errormsg2 = "Invalid E-mail!"
         return render_template("login.html", errormsg2 = errormsg2)
         
 @app.route('/student/<int:regno>', methods=["PUT"])
 def update_user(regno):
+    
+    # get the json data passed from the client side
     data = request.get_json()
     
+    # calling below function to update student details
     response = dynamodb.update_item_from_Student_table(data)
     
+    # check whether update is successfull
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
         return {
             'msg'                : 'Updated successfully',
             'ModifiedAttributes' : response['Attributes'],
             'response'           : response['ResponseMetadata']
         }
-
+    # if update is not successfull
     return {
         'msg'      : 'Some error occured',
         'response' : response
@@ -81,6 +95,8 @@ def update_user(regno):
     
 @app.route('/profile/<int:rNo>', methods=["GET"])
 def get_movie(rNo):
+    
+    # calling below function to get student details according to the register number
         response = dynamodb.get_item_from_Student_table(rNo)
         users = response['Items']
         try:
@@ -89,6 +105,7 @@ def get_movie(rNo):
             if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
         
                 if users:
+                    # render porfile view with users detila
                     return render_template("profile-view.html", users = users)
             
         except IndexError:

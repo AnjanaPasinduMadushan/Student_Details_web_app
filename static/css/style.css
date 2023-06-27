@@ -79,9 +79,15 @@
     border-radius: 5px;
     border-color: black;
   }
+
   
   #login_form input{
       width: 250px;
+      margin-bottom: 100px;
+  }
+  
+  #login_form button{
+    padding: 10px;
   }
   
  #login_title{
@@ -91,31 +97,29 @@
  
  
  /*Profile.html*/
- #std_form {
-    border: 1px solid;
-    margin-left: 400px;
-    margin-right: 400px;
-    padding: 20px;
-    border-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ /*#std_form {*/
+ /*   margin-left: 400px;*/
+ /*   margin-right: 400px;*/
+ /*   padding: 20px;*/
+ /*   display: flex;*/
+ /*   flex-direction: column;*/
+ /*   align-items: center;*/
+ /* }*/
 
-  #std_form label {
-    margin-bottom: 10px;
-  }
+ /* #std_form label {*/
+ /*   margin-bottom: 10px;*/
+ /* }*/
 
-  #std_form input,
-  #std_form textarea,
-  #std_form select {
-    width: 300px;
-    margin-bottom: 10px;
-  }
+ /* #std_form input,*/
+ /* #std_form textarea,*/
+ /* #std_form select {*/
+ /*   width: 300px;*/
+ /*   margin-bottom: 10px;*/
+ /* }*/
   
-  #std_form textarea{
-      height: 50px;
-  }
+ /* #std_form textarea{*/
+ /*     height: 50px;*/
+ /* }*/
   
   #profile_title{
     font-style: italic
@@ -129,4 +133,8 @@
 
  #std_view{
    font-style: italic
+ }
+ 
+ button{
+   cursor: pointer;
  }

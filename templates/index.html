@@ -8,17 +8,11 @@
     <body>
         
         <div>
-            <h1 id = "uni_name"><center>EduX Technical University(ETU)</center></h1>
+            <h1 id = "uni_name">EduX Technical University(ETU)</h1>
+            
         </div>
         
-        <div>
-            <center>
-                {% if error_reg %}
-      <p class="error">{{ error_reg }}</p>
-    {% endif %}
-            </center>
-    
-        </div>
+        <br/>
         <h2><center>Search the Students</center></h2>
         <form id="search_regno" method="GET">
             
@@ -30,8 +24,8 @@
         
         <div>
             <center>
-        <button>
-        <a href="/register" class="sign_up_btn">Registration</a>
+        <button  class="sign_up_btn">
+        <a href="/register">Registration</a>
         </button>
             
         <button>
@@ -40,6 +34,20 @@
         </center>
         </div>
         <br><br>
+        
+        <div class="img-home">
+            <img  src = "static/images/home.png" alt="home-image"/>
+        </div>
+        
+        
+        <div>
+            <center>
+                {% if error_reg %}
+      <p class="error">{{ error_reg }}</p>
+    {% endif %}
+            </center>
+    
+        </div>
         
         <script>
         const form = document.getElementById('search_regno');

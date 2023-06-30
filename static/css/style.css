@@ -1,5 +1,36 @@
 *{
-    background-color: #ffcc66;
+    background-color: #99bbff;
+    padding:0;
+    margin:0;
+}
+
+.img-home{
+  border: 5px solid;
+  border-radius: 15px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  display: inline-block;
+  padding:10px;
+  border-radius: 10px;
+}
+
+button a{
+  text-decoration: none;
+}
+
+
+
+#uni_name{
+  font-size: 60px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  background-color: #1a66ff;
+  height:100px;
 }
 
 #search_regno {
@@ -8,9 +39,7 @@
       align-items: center;
     }
     
-#uni_name{
-    padding-top: 100px
-}
+
 
   
 #body {

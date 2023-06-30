@@ -7,14 +7,14 @@ from flask import Flask, request, render_template
 
 dynamodb_client = boto3.client(
     'dynamodb',
-    aws_access_key_id     = keys.ACCESS_KEY_ID,
-    aws_secret_access_key = keys.ACCESS_SECRET_KEY,
+    # aws_access_key_id     = keys.ACCESS_KEY_ID,
+    # aws_secret_access_key = keys.ACCESS_SECRET_KEY,
     region_name           = keys.REGION_NAME,
 )
 dynamodb_resource = boto3.resource(
     'dynamodb',
-    aws_access_key_id     = keys.ACCESS_KEY_ID,
-    aws_secret_access_key = keys.ACCESS_SECRET_KEY,
+    # aws_access_key_id     = keys.ACCESS_KEY_ID,
+    # aws_secret_access_key = keys.ACCESS_SECRET_KEY,
     region_name           = keys.REGION_NAME,
 )
 

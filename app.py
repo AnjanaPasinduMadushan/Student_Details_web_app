@@ -116,7 +116,7 @@ def get_student(rNo):
             
             #Out of index error
             error_reg = "There are not any student with this registration no"
-            return render_template("index.html", error_reg = error_reg)
+            return render_template('index.html', error_reg = error_reg)
     
         return {
             'msg': 'Some error occured',

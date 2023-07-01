@@ -20,10 +20,21 @@
             <input type="number" id="stdno" name="stdno" min = "1" required>
             <input type = "submit" value="Search">
             <br><br>
+            
+            
         </form>
         
         <div>
             <center>
+                {% if error_reg %}
+                  <p class="error">{{ error_reg }}</p>
+                {% endif %}
+            </center>
+        </div>
+        
+        <div>
+            
+        <center>
         <button  class="sign_up_btn">
         <a href="/register">Registration</a>
         </button>
@@ -32,6 +43,7 @@
         <a href="/login" class="login_up_btn">Login</a>
         </button>
         </center>
+        
         </div>
         <br><br>
         
@@ -39,29 +51,19 @@
             <img  src = "static/images/home.png" alt="home-image"/>
         </div>
         
-        
-        <div>
-            <center>
-                {% if error_reg %}
-      <p class="error">{{ error_reg }}</p>
-    {% endif %}
-            </center>
-    
-        </div>
-        
-        <script>
-        const form = document.getElementById('search_regno');
-        const stdnoInput = document.getElementById('stdno');
+        <!--// <script>-->
+        <!--// const form = document.getElementById('search_regno');-->
+        <!--// const stdnoInput = document.getElementById('stdno');-->
 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent the default form submission
+        <!--// form.addEventListener('submit', (event) => {-->
+        <!--//     event.preventDefault(); // Prevent the default form submission-->
 
-            const stdno = stdnoInput.value;
-            const url = `/profile/${stdno}`;
+        <!--//     const stdno = stdnoInput.value;-->
+        <!--//     const url = `/profile/${stdno}`;-->
 
-            window.location.href = url; 
-        });
-        </script>
+        <!--//     window.location.href = url; -->
+        <!--// });-->
+        <!--// </script>-->
         
     </body>
 </html>

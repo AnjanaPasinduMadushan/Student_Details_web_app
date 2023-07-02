@@ -52,8 +52,14 @@
     {% if error_msg %}
       <p class="error">{{ error_msg }}</p>
     {% endif %}
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" onClick="onFunction(e)">
   </form>
   </div>
+
+  <script>
+    function onFunction(e){
+      e.preventDefault():
+    }
+  </script>
 </body>
 </html>

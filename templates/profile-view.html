@@ -11,15 +11,44 @@
 		<h2 id="std_view">Student Profile View</h2>
 		<div id ="table">
 		<table>
-			<tr><th>Registration No</th><td>{{users.regno}}</td></tr>
-			<tr><th>Full Noame</th><td>{{users.fullname}}</td></tr>
-			<tr><th>Email</th><td>{{users.email}}</td></tr>
-			<tr><th>Degree Program</th><td>{{users.degree}}</td></tr>
-			<tr><th>Contact No</th><td>{{users.contact}}</td></tr>
-			<tr><th>Introduction</th><td>{{users.introduction}}</td></tr>
-			<tr><th>Current GPA</th><td>{{users.gpa}}</td></tr>
-			<tr><th>Skills</th><td>{{users.skills}}</td></tr>
+			<tr><th>Registration No</th><td id='regno'></td></tr>
+			<tr><th>Full Noame</th><td id='fullname'></td></tr>
+			<tr><th>Email</th><td id='email'></td></tr>
+			<tr><th>Degree Program</th><td id='degree'></td></tr>
+			<tr><th>Contact No</th><td id='contact'></td></tr>
+			<tr><th>Introduction</th><td id='introduction'></td></tr>
+			<tr><th>Current GPA</th><td id='gpa'></td></tr>
+			<tr><th>Skills</th><td id='skills'></td></tr>
 		</table>
 		</div>
+		
+		<script>
+			const regNo = window.location.pathname.split('/')[2];
+			
+				const regno = document.getElementById('regno')
+				const fullname = document.getElementById('fullname')
+				const degree = document.getElementById('degree')
+				const email = document.getElementById('email')
+				const contact = document.getElementById('contact')
+				const introduction = document.getElementById('introduction')
+				const gpa = document.getElementById('gpa')
+				const skills = document.getElementById('skills')
+			
+			fetch(`/profile/${regNo}`)
+			.then(response=>response.json())
+			.then(data=>{
+				regno.textContent = data.regno;
+                fullname.textContent = data.fullname;
+                degree.textContent = data.degree;
+                email.textContent = data.email;
+                contact.textContent = data.contact;
+                introduction.textContent = data.introduction;
+                gpa.textContent = data.gpa;
+                skills.textContent = data.skills;
+			})
+			.catch(error => {
+                console.error('Error:', error);
+            });
+		</script>
 	</body>
 </html>

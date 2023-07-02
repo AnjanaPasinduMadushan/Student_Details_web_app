@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 
 import boto3
 
@@ -106,17 +106,17 @@ def get_student(rNo):
         try:
             users = users[0]
         
-            if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+            if  response['ResponseMetadata']['HTTPStatusCode'] == 200:
         
                 if users:
                     # render porfile view with users detila
-                    return render_template("profile-view.html", users = users)
+                    return jsonify(users)
             
         except IndexError:
             
             #Out of index error
             error_reg = "There are not any student with this registration no"
-            return render_template('index.html', error_reg = error_reg)
+            return jsonify(error_reg = error_reg)
     
         return {
             'msg': 'Some error occured',

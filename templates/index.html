@@ -1,4 +1,4 @@
-<!Doctype html>
+<!Doctype>
 <html>
     <head>
         <title>Home</title>
@@ -49,7 +49,6 @@
         <script>
         const form = document.getElementById('search_regno');
         const stdnoInput = document.getElementById('stdno');
-        const errorElement = document.getElementById('error_message')
 
         form.addEventListener('submit', (event) => {
             event.preventDefault(); // Prevent the default form submission
@@ -62,11 +61,12 @@
             .then(data=>{
                 if(data.error_reg){
                     swal.fire(data.error_reg);
-                    // errorElement = data.error_reg;
+                    return;
                     
-                }else {
-                    window.location.href =  url;
                 }
+                    console.log("Anjana")
+                    window.location.href =  url;
+                
             }).catch(error => {
                 console.error('Error:', error);
             });

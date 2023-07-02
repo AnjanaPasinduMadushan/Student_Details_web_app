@@ -109,8 +109,8 @@ def get_student(rNo):
             if  response['ResponseMetadata']['HTTPStatusCode'] == 200:
         
                 if users:
-                    # render porfile view with users detila
-                    return jsonify(users)
+                    # render porfile view with users details
+                    return render_template("profile-view.html", users=users)
             
         except IndexError:
             

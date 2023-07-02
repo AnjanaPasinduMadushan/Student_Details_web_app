@@ -1,54 +1,46 @@
-<!Doctype>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Profile-View</title>
-		<link rel="stylesheet" type="text/css" href="static/css/style.css">
-		
-	</head>
-	
-	<body>
-		
-		<h2 id="std_view">Student Profile View</h2>
-		<div id ="table">
-		<table>
-			<tr><th>Registration No</th><td id='regno'></td></tr>
-			<tr><th>Full Noame</th><td id='fullname'></td></tr>
-			<tr><th>Email</th><td id='email'></td></tr>
-			<tr><th>Degree Program</th><td id='degree'></td></tr>
-			<tr><th>Contact No</th><td id='contact'></td></tr>
-			<tr><th>Introduction</th><td id='introduction'></td></tr>
-			<tr><th>Current GPA</th><td id='gpa'></td></tr>
-			<tr><th>Skills</th><td id='skills'></td></tr>
-		</table>
-		</div>
-		
-		<script>
-			const regNo = window.location.pathname.split('/')[2];
-			
-				const regno = document.getElementById('regno')
-				const fullname = document.getElementById('fullname')
-				const degree = document.getElementById('degree')
-				const email = document.getElementById('email')
-				const contact = document.getElementById('contact')
-				const introduction = document.getElementById('introduction')
-				const gpa = document.getElementById('gpa')
-				const skills = document.getElementById('skills')
-			
-			fetch(`/profile/${regNo}`)
-			.then(response=>response.json())
-			.then(data=>{
-				regno.textContent = data.regno;
-                fullname.textContent = data.fullname;
-                degree.textContent = data.degree;
-                email.textContent = data.email;
-                contact.textContent = data.contact;
-                introduction.textContent = data.introduction;
-                gpa.textContent = data.gpa;
-                skills.textContent = data.skills;
-			})
-			.catch(error => {
-                console.error('Error:', error);
-            });
-		</script>
-	</body>
+<head>
+    <title>Profile View</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+    <h2 id="std_view">Student Profile View</h2>
+    <div id="table">
+        <table>
+            <tr>
+                <th>Registration No</th>
+                <td id="regno">{{ users.regno }}</td>
+            </tr>
+            <tr>
+                <th>Full Name</th>
+                <td id="fullname">{{ users.fullname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td id="email">{{ users.email }}</td>
+            </tr>
+            <tr>
+                <th>Degree Program</th>
+                <td id="degree">{{ users.degree }}</td>
+            </tr>
+            <tr>
+                <th>Contact No</th>
+                <td id="contact">{{ users.contact }}</td>
+            </tr>
+            <tr>
+                <th>Introduction</th>
+                <td id="introduction">{{ users.introduction }}</td>
+            </tr>
+            <tr>
+                <th>Current GPA</th>
+                <td id="gpa">{{ users.gpa }}</td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td id="skills">{{ users.skills }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
 </html>

@@ -1,9 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
     <head>
         <title>Home</title>
+        
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<style>
+    body {
+      margin: 20px;
+    }
+    
+  </style>
     </head>
     
     <body>
@@ -15,11 +29,12 @@
         
         <br/>
         <h2><center>Search the Students</center></h2>
-        <form id="search_regno" method="GET">
+        <form class="search_regno" method="GET">
             
-            <label for="stdno"><h2>Registration No:</h2></label>
-            <input type="number" id="stdno" name="stdno" min = "1" required>
-            <input type = "submit" value="Search">
+            <center><label for="stdno"><h2>Registration No:</h2></label>
+            <input type="number" class="form-control" id="stdno" name="stdno" min = "1" placeholder="Enter email" style="width: 300px;" required></br>
+            <input type = "submit" value="Search" class="btn btn-primary">
+            </center>
             <br><br>
             
             
@@ -57,20 +72,22 @@
             const url = `/profile/${stdno}`;
             
             fetch(url)
-            .then(response=>response.json())
-            .then(data=>{
-                if(data.error_reg){
-                    swal.fire(data.error_reg);
-                    return;
-                    
-                }
-                    console.log("Anjana")
-                    window.location.href =  url;
-                
-            }).catch(error => {
-                console.error('Error:', error);
-            });
-    });
+                .then(response => {
+                    if (response.status === 200) {
+                        // Student number exists, redirect to profile page
+                        window.location.href = url;
+                    } else {
+                        // display Swal message
+                        swal.fire("Student number does not exist");
+                    }
+                })
+                .catch(error => {
+                    // Error occurred, display Swal message
+                    swal.fire("Error", "An error occurred while processing the request", "error");
+                    console.error(error);
+                });
+
+        });
         </script>
         
     </body>

@@ -1,174 +1,95 @@
-*{
-    background-color: #99bbff;
-    padding:0;
-    margin:0;
-}
+/**{*/
+/*    background-color: #99bbff;*/
+/*}*/
 
-.img-home{
-  border: 5px solid;
-  border-radius: 15px;
-  display: flex;
-  justify-content:center;
-  align-items:center;
-}
+/*.img-home{*/
+/*  border: 5px solid;*/
+/*  border-radius: 15px;*/
+/*  display: flex;*/
+/*  justify-content:center;*/
+/*  align-items:center;*/
+/*}*/
 
-button{
-  display: inline-block;
-  padding:10px;
-  border-radius: 10px;
-}
+/*button{*/
+/*  display: inline-block;*/
+/*  padding:10px;*/
+/*  border-radius: 10px;*/
+/*}*/
 
-button a{
-  text-decoration: none;
-}
+/*button a{*/
+/*  text-decoration: none;*/
+/*}*/
 
-.signup_container h1{
-  font-style: italic
-}
+/*.signup_container h1{*/
+/*  font-style: italic*/
+/*}*/
 
 
-#uni_name{
-  font-size: 60px;
-  display: flex;
-  justify-content:center;
-  align-items:center;
-  background-color: #1a66ff;
-  height:100px;
-}
+/*#uni_name{*/
+/*  font-size: 60px;*/
+/*  display: flex;*/
+/*  justify-content:center;*/
+/*  align-items:center;*/
+/*  background-color: #1a66ff;*/
+/*  height:100px;*/
+/*}*/
+  
 
-#search_regno {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/*#page_title {*/
     
+/*    font-style: italic;*/
+/*    padding-right: 220px;*/
+/*    height: 450px*/
+/*  }*/
+  
+/*#page_title h2{*/
+/*    font-size: 80px;*/
+/*}*/
 
+/*login.html*/
+/*#body_login {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 70vh;*/
+/*    padding-top: 20px*/
+/*  }*/
+
+/*  #login_form {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    padding: 50px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    border-color: black;*/
+/*  }*/
 
   
-#body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/*  #login_form input{*/
+/*      width: 250px;*/
+/*      margin-bottom: 10px;*/
+/*  }*/
   
-  /*#sign_up {*/
-  /*  display: flex;*/
-  /*  flex-direction: column;*/
-  /*  align-items: flex-start;*/
-  /*  padding: 50px;*/
-  /*  border: 1px solid #ccc;*/
-  /*  border-radius: 5px;*/
-  /*  border-color: black;*/
-  /*  margin-top: 20px;*/
-  /*}*/
-
-  /*#sign_up label {*/
-  /*  display: inline-block;*/
-  /*  width: 150px;*/
-  /*  text-align: left;*/
-  /*}*/
-
-  /*#sign_up input,*/
-  /*#sign_up textarea,*/
-  /*#sign_up select {*/
-  /*  width: 250px;*/
-  /*}*/
+/*  #login_form button{*/
+/*    padding: 10px;*/
+/*  }*/
   
-  /*#sign_up textarea{*/
-  /*    height: 50px*/
-  /*}*/
-
-  /*#sign_up button {*/
-  /*  margin-top: 10px;*/
-  /*}*/
-  
-
-
-#page_title {
-    
-    font-style: italic;
-    padding-right: 220px;
-    height: 450px
-  }
-  
-#page_title h2{
-    font-size: 80px;
-}
-
-login.html
-#body_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    padding-top: 20px
-  }
-
-  #login_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    border-color: black;
-  }
-
-  
-  #login_form input{
-      width: 250px;
-      margin-bottom: 10px;
-  }
-  
-  #login_form button{
-    padding: 10px;
-  }
-  
- #login_title{
-    font-style: italic;
-    font-size: 80px;
- }
+/* #login_title{*/
+/*    font-style: italic;*/
+/*    font-size: 80px;*/
+/* }*/
  
- 
- Profile.html
- /*#std_form {*/
- /*   margin-left: 400px;*/
- /*   margin-right: 400px;*/
- /*   padding: 20px;*/
- /*   display: flex;*/
- /*   flex-direction: column;*/
- /*   align-items: center;*/
- /* }*/
-
- /* #std_form label {*/
- /*   margin-bottom: 10px;*/
- /* }*/
-
- /* #std_form input,*/
- /* #std_form textarea,*/
- /* #std_form select {*/
- /*   width: 300px;*/
- /*   margin-bottom: 10px;*/
- /* }*/
-  
- /* #std_form textarea{*/
- /*     height: 50px;*/
- /* }*/
-  
- /* #profile_title{*/
- /*   font-style: italic*/
- /* }*/
-  
   /*Profile_view*/
-  #table {
-				margin: 0 auto;  
-			}
+/*  #table {*/
+/*				margin: 0 auto;  */
+/*			}*/
 			
 
- #std_view{
-   font-style: italic
- }
+/* #std_view{*/
+/*   font-style: italic*/
+/* }*/
  
- button{
-   cursor: pointer;
- }
+/* button{*/
+/*   cursor: pointer;*/
+/* }*/

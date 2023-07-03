@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, json
 
 import boto3
 
@@ -115,8 +115,8 @@ def get_student(rNo):
         except IndexError:
             
             #Out of index error
-            error_reg = "There are not any student with this registration no"
-            return jsonify(error_reg = error_reg)
+            error_reg = "There are not any student with this " + str(rNo);
+            return;
     
         return {
             'msg': 'Some error occured',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
   rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   
@@ -9,6 +9,7 @@
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
   <title>Profile-Edit</title>
   <style>
     body {
@@ -18,26 +19,24 @@
   </style>
 </head>
 <body>
-  <a href="/"><p>HOME</p></a>
-  <center><h1>STUDENT PROFILE</h1></center>
-
-  
-  <form>
+  <center>
+    <h1><a href="/">ETU</a></h1><h1>STUDENT PROFILE</h1></center>
+  <form id='std_form'>
   <div class="row">
     <div class="col">
       <label for="regno">Registration No:</label>
-      <input type="number" class="form-control" placeholder="Registration Number" pattern="\d{4}" name="regno" value={{item.regno}} required>
+      <input type="number" class="form-control" id="regno" placeholder="Registration Number" pattern="\d{4}" name="regno" value={{item.regno}} required>
     </div>
     <div class="col">
       <label>Full Name</label>
-      <input type="text" class="form-control" placeholder="Full name" name="fullname" value={{item.fullname}} required>
+      <input type="text" class="form-control" id="fullname" placeholder="Full name" name="fullname" value={{item.fullname}} required>
     </div>
     
   </div>
   <div class="row">
     <div class="col">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="Email" name="email" value={{item.email}} disabled>
+        <input type="email" class="form-control" id="email" placeholder="Email" name="email" value={{item.email}} disabled>
     </div>
     
     <div class="col">
@@ -60,7 +59,7 @@
     
     <div class="col">
         <label>Contact No</label>
-        <input type="tel" class="form-control" placeholder="Contact no" name="contact" value={{item.contact}} required>
+        <input type="tel" class="form-control" placeholder="Contact no" name="contact" value={{item.contact}} id = 'contact' required>
     </div>
   </div>
   

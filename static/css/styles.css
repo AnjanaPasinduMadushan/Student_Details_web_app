@@ -1,0 +1,21 @@
+body{
+    background-color: #99bbff;
+}
+
+a{
+    text-decoration: none;
+}
+
+#uni_name{
+  font-size: 60px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  background-color: #1a66ff;
+  height:100px;
+}
+
+#intro{
+    text-align: center;
+}
+

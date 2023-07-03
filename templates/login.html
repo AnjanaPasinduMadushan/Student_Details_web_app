@@ -5,7 +5,7 @@
   rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
   <title>Login Form</title>
   
   
@@ -13,15 +13,15 @@
     body {
       margin: 80px;
     }
-    .form_login{
-      text-align:center;
-    }
+
   </style>
   
 </head>
 <body>
 
-  <center><h2 id ="login_title">Login Form</h2></center>
+  <center>
+    <h1><a href="/">ETU</a></h1>
+    <h2 id ="login_title">LOGIN</h2></center>
   <form action="/check" method="POST">
 
 <div class='form_login'>
@@ -41,7 +41,7 @@
       <p class="error">{{ errormsg2 }}</p>
     {% endif %}</center>
    <center>
-    <input type="submit" value="REGISTER" class="btn btn-primary">
+    <input type="submit" value="LOGIN" class="btn btn-primary">
     <h3><a href="/register" class="already">
     If you are new, Register here.</a></h3>
   </center>

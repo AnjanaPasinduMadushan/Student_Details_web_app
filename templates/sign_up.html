@@ -2,64 +2,96 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   <title>Registration Form</title>
+  <style>
+    body {
+      margin: 20px;
+    }
+    
+  </style>
 </head>
 
 <body>
+
+<div class='signup_container'>
   
-  <div id="body">
-  <div id="page_title">
-    <h2>REGISTRATION</h2>
-    <h3><a href="/login" class="already">
-    You already have an account? Login here.</a></h3>
+  <center><h1>REGISTRATION</h1></center>
+  <form action="/sign_up" method="POST">
+  <div class="row">
+    <div class="col">
+      <label for="regno">Registration No:</label>
+      <input type="number" class="form-control" placeholder="Registration Number" pattern="\d{4}" name="regno" required>
+    </div>
+    <div class="col">
+      <label>Full Name</label>
+      <input type="text" class="form-control" placeholder="Full name" name="fullname" required>
+    </div>
+    
+  </div>
+  <div class="row">
+    <div class="col">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Email" name="email" required>
+    </div>
+    <div class="col">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+    </div>  
   </div>
   
-  <form action="/sign_up" method="POST" id="sign_up">
-
-    <label for="regno">Registration No:</label>
-    <input type="number" id="regno" name="regno" min="1" max="9999" pattern="\d{4}" required><br><br>
-
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname" required><br><br>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
-
-    <label for="degree">Degree Program:</label>
-    <select id="degree" name="degree" required>
+  <div class="row">
+    <div class="col">
+    <label>Degree Program:</label>
+    <select class="form-control" id="degree" name="degree" required>
       <option value="">Select a degree program</option>
       <option value="Bsc Computer Science and engineering">Bsc Computer Science and engineering</option>
       <option value="Bsc Machinical engineering">Bsc Machinical engineering</option>
       <option value="Bsc Civil engineering">Bsc Civil engineering</option>
       <option value="Bsc Electrical engineering">Bsc Electrical engineering</option>
-    </select><br><br>
-
-    <label for="contact">Contact No:</label>
-    <input type="tel" id="contact" name="contact" required><br><br>
-
+    </select>
+    </div>
+    
+    <div class="col">
+        <label>Contact No</label>
+        <input type="tel" class="form-control" placeholder="Contact no" name="contact" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
     <label for="introduction">Introduction:</label>
-    <textarea id="introduction" name="introduction" required></textarea><br><br>
-
-    <label for="gpa">Current GPA:</label>
-    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa" required><br><br>
-
+    <textarea class="form-control" id="introduction" name="introduction" style="height: 100px" placeholder="Add some introduction about your self" required></textarea>
+  </div>
+  
+  <div class="form-group">
     <label for="skills">Skills:</label>
-    <textarea id="skills" name="skills" required></textarea><br><br>
-
-    {% if error_msg %}
+    <textarea class="form-control" id="skills" name="skills"  placeholder="Add the skills you have developed" style="height: 100px" required></textarea>
+  </div>
+  
+  
+  <div class="form-group">
+      <center>
+      <label for="regno">GPA</label>
+      <input type="number" class="form-control" min="0.00" step="0.01" id="gpa" name="gpa" style="width: 300px;" placeholder="GPA" required>
+      </center>
+  </div>
+  
+  </br>
+  {% if error_msg %}
       <p class="error">{{ error_msg }}</p>
     {% endif %}
-    <input type="submit" value="Submit" onClick="onFunction(e)">
-  </form>
-  </div>
+  <center>
+    <input type="submit" value="REGISTER" class="btn btn-primary">
+    <h3><a href="/login" class="already">
+    You already have an account? Login here.</a></h3>
+  </center>
+    
+</form>
 
-  <script>
-    function onFunction(e){
-      e.preventDefault()
-    }
-  </script>
+</div>
+
 </body>
 </html>

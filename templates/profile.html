@@ -2,49 +2,87 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Profile-Edit</title>
+  <style>
+    body {
+      margin: 20px;
+    }
+    
+  </style>
 </head>
 <body>
   <a href="/"><p>HOME</p></a>
-  <center><h1 id="profile_title">STUDENT PROFILE</h1></center>
-  <form id="std_form">
+  <center><h1>STUDENT PROFILE</h1></center>
 
-    <label for="regno">Registration No:</label>
-    <input type="number" id="regno" name="regno" value={{item.regno}}><br>
-
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullname" value={{item.fullname}}><br>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value={{item.email}} disabled><br>
-
-    <label for="degree">Degree Program:</label>
-    <select id="degree" name="degree">
+  
+  <form>
+  <div class="row">
+    <div class="col">
+      <label for="regno">Registration No:</label>
+      <input type="number" class="form-control" placeholder="Registration Number" pattern="\d{4}" name="regno" value={{item.regno}} required>
+    </div>
+    <div class="col">
+      <label>Full Name</label>
+      <input type="text" class="form-control" placeholder="Full name" name="fullname" value={{item.fullname}} required>
+    </div>
+    
+  </div>
+  <div class="row">
+    <div class="col">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Email" name="email" value={{item.email}} disabled>
+    </div>
+    
+    <div class="col">
+    <label>Degree Program:</label>
+    <select class="form-control" id="degree" name="degree" required>
       <option value="">Select a degree program</option>
       <option value="Bsc Computer Science and engineering" {% if item.degree == 'Bsc Computer Science and engineering' %} selected {% endif %}>Bsc Computer Science and engineering</option>
       <option value="Bsc Machinical engineering" {% if item.degree == 'Bsc Machinical engineering' %} selected {% endif %}>Bsc Machinical engineering</option>
       <option value="Bsc Civil engineering" {% if item.degree == 'Bsc Civil engineering' %} selected {% endif %}>Bsc Civil engineering</option>
       <option value="Bsc Electrical engineering" {% if item.degree == 'Bsc Electrical engineering' %} selected {% endif %}>Bsc Electrical engineering</option>
-    </select><br>
-
-    <label for="contact">Contact No:</label>
-    <input type="tel" id="contact" name="contact" value={{item.contact}}><br>
-
+    </select>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <label for="regno">GPA</label>
+      <input type="number" class="form-control" min="0.00" step="0.01" id="gpa" name="gpa" style="width: 300px;" placeholder="GPA" value={{item.gpa}} required>
+    </div>
+    
+    <div class="col">
+        <label>Contact No</label>
+        <input type="tel" class="form-control" placeholder="Contact no" name="contact" value={{item.contact}} required>
+    </div>
+  </div>
+  
+  <div class="form-group">
     <label for="introduction">Introduction:</label>
-    <textarea id="introduction" name="introduction">{{item.introduction}}</textarea><br>
-
-    <label for="gpa">Current GPA:</label>
-    <input type="number" min="0.00" step="0.01" id="gpa" name="gpa" value={{item.gpa}}><br>
-
+    <textarea class="form-control" id="introduction" name="introduction" style="height: 100px" placeholder="Add some introduction about your self" required>{{item.introduction}}</textarea>
+  </div>
+  
+  <div class="form-group">
     <label for="skills">Skills:</label>
-    <textarea id="skills" name="skills">{{item.skills}}</textarea><br>
-
-    <button><center>Update</center></button>
+    <textarea class="form-control" id="skills" name="skills"  placeholder="Add the skills you have developed" style="height: 100px" required>{{item.skills}}</textarea>
+  </div>
+  
+  </br>
+  {% if error_msg %}
+      <p class="error">{{ error_msg }}</p>
+    {% endif %}
+  <center>
+    <input type="submit" value="UPDATE" class="btn btn-primary">
+  </center>
     
-    
-    
-  </form>
+</form>
   
   <script>
     document.getElementById("std_form").addEventListener('submit', function(e){
@@ -83,7 +121,7 @@
         console.log(form_data);
         console.log('Student Details are updated successfully');
         //alert('Student Details are updated successfully');
-        Swal.fire('Student Details are updated successfully'):
+        swal.fire('Student Details are updated successfully');
         
       }catch(error){
         console.log(error);

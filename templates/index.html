@@ -57,15 +57,27 @@
             const url = `/profile/${stdno}`;
             
             fetch(url)
-            .then(response=>response.json())
+            .then(response=>{
+                if(response.ok){
+                    return response.json();
+                }else{
+                    throw new Error('Error: ' + response.status);
+                }
+                
+            })
             .then(data=>{
-                if(data.error_reg){
+                if(data){
+                    
+                    if(data.error_reg){
                     swal.fire(data.error_reg);
                     return;
+                    }
                     
-                }
                     console.log("Anjana")
                     window.location.href =  url;
+                    
+                }
+                    
                 
             }).catch(error => {
                 console.error('Error:', error);

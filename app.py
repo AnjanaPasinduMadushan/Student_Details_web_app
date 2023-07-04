@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, jsonify, json
+from flask import Flask, request, render_template, jsonify, json, redirect, url_for
 
 import boto3
 
 import dynamoDB_handler as dynamodb
-from urllib import parse
+from urlparse import urlparse, parse_qs
+import urllib2
 
 
 app = Flask(__name__)
@@ -134,6 +135,7 @@ def get_student(rNo):
     
 @app.route('/upload', methods=['POST'])
 def upload():
+    email = request.form.get('hidden-email')
     file = request.files['std-img']
     filename = file.filename
     bucket_name = 'studentimageflaskbucket'
@@ -144,13 +146,25 @@ def upload():
         ContentType='image/jpeg',
         ContentDisposition='inline'
     )
+    # print(email)
     
-    encoded_object_key = urllib.parse.quote(filename)
+    encoded_object_key = urllib2.quote(filename)
     object_url = "https://{bucket_name}.s3.amazonaws.com/{encoded_object_key}".format(
     bucket_name=bucket_name,
     encoded_object_key=encoded_object_key
-)
-    return object_url
+    #return "successfully updated"
+    )
+    response = dynamodb.update_image_url(email, object_url)
+    
+    if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+         return {
+            'msg'                : 'Updated successfully',
+            'ModifiedAttributes' : response['Attributes'],
+            'response'           : response['ResponseMetadata']
+        } 
+    # if update is not successfull
+    return 'error is occured'
+    return render_template("profile-view.html")
 
 #define port and host
 if __name__ == '__main__':

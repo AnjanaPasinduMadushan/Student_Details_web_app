@@ -19,3 +19,8 @@ a{
     text-align: center;
 }
 
+#profile_pic{
+    width: 1px; 
+    height: 2px;
+}
+

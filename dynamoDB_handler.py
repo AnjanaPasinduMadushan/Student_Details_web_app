@@ -65,7 +65,8 @@ def add_item_to_user_table(regno, fullname, email, password, degree, contact, in
             'contact'  : contact,
             'introduction'  : introduction,
             'gpa'  : gpa,
-            'skills'  : skills
+            'skills'  : skills,
+            'image_url': 'null'
         }
     )
     return response
@@ -136,4 +137,20 @@ def update_item_from_Student_table(data):
             ReturnValues = "UPDATED_NEW"  # returns the new updated value
     )
         
+    return response
+    
+    
+def update_image_url(email, object_url):
+    response = UserTable.update_item(
+        Key={
+            'email': email
+        },
+        AttributeUpdates={
+            'image_url': {
+                'Value': object_url,
+                'Action': 'PUT'
+            }
+        },
+        ReturnValues="UPDATED_NEW"  # returns the new updated value
+    )
     return response

@@ -11,16 +11,37 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" type="text/css" href="static/css/styles.css">
   <title>Profile-Edit</title>
+  
   <style>
     body {
       margin: 20px;
     }
     
   </style>
+  
 </head>
+
+
 <body>
+  
   <center>
-    <h1><a href="/">ETU</a></h1><h1>STUDENT PROFILE</h1></center>
+    <h1><a href="/">ETU</a></h1><h1>STUDENT PROFILE</h1>
+    <img id='profile_pic' src="{{item.image_url}}" style="width: 200px; height: 200px;" alt="Italian Trulli">
+  </center>
+  
+  </br>
+  
+  <!--Image FORM-->
+    <form id='image-form' action="/upload" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="email" name="hidden-email" value="{{item.email}}">
+  <center>
+    <label for="img">Select a Profile picture:</label>
+    <input type="file" id="img" name="std-img" accept="image/*">
+    <input type="submit" class="btn btn-primary" value="Change">
+    </center>
+  </form>
+  
+  <!--Main FORM-->
   <form id='std_form'>
   <div class="row">
     <div class="col">
@@ -83,13 +104,7 @@
     
 </form>
   </br>
-  <form id='image-form'>
-  <center>
-  <label for="img">Select a Profile picture:</label>
-  <input type="file" id="img" name="std-img" accept="image/*">
-  <input type="submit" class="btn btn-primary" value="Change">
-  </center>
-  </form>
+
   <script>
     document.getElementById("std_form").addEventListener('submit', function(e){
       e.preventDefault();
@@ -135,6 +150,37 @@
       }
       
     });
+
+    
+    document.getElementById('image-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const url = '/upload';
+        // Create a FormData object to send the file
+      const formData = new FormData();
+      formData.append('hidden-email', document.getElementById('email').value);
+      formData.append('std-img', document.getElementById('img').files[0]);
+
+          fetch(url, {
+            method: 'POST',
+            body: formData,
+          })
+          .then(response => {
+              if (response.status === 200) {
+                  // Student number exists, redirect to profile page
+                  swal.fire('Image is updated')
+              } else {
+                  // display Swal message
+                  swal.fire("There is a problem in updating the image");
+              }
+                })
+                .catch(error => {
+                    // Error occurred, display Swal message
+                    swal.fire("Error", "An error occurred while processing the request", "error");
+                    console.error(error);
+                });
+      
+    })
+    
   </script>
   
 </body>

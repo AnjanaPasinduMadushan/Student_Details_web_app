@@ -32,24 +32,24 @@ def login():
 @app.route('/register') # decorator for sign up page
 def register():    
     return render_template('sign_up.html')
-    
 
-@app.route('/sign_up', methods=['POST'])
+@app.route('/sign_up', methods=['POST'])    
 def add_user():
     # Extract data from the form
-    data = request.get_json()
+    data = request.form.to_dict()
     
     # calling below function to add user data
-    response = dynamodb.add_item_to_user_table(data)
+    response = dynamodb.add_item_to_user_table(int(data['regno']), data['fullname'], data['email'],
+     data['password'], data['degree'], data['contact'], data['introduction'], data['gpa'], data['skills'])
      
     if 'error' in response:
         error_msg = response['error']
-        return jsonify(error_msg=error_msg)
+        return render_template('sign_up.html', error_msg=error_msg)
   
   # check whether response passed below condition
-    # if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
-    #     msg = "Registration Complete. Please Login to your account !"
-    #     return render_template('login.html', msg=msg);
+    if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        msg = "Registration Complete. Please Login to your account !"
+        return render_template('login.html', msg = msg)
 
     # if there is an error
     return {  

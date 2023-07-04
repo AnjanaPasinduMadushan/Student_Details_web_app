@@ -25,7 +25,7 @@
     <h1><a href="/">ETU</a></h1>
     <img src='/static/images/logo.png' alt='logo' style="width:40px; height:40px">
     <h1>REGISTRATION</h1></center>
-  <form method="POST" id='signup'>
+  <form action="/sign_up" method="POST" id='signup'>
   <div class="row">
     <div class="col">
       <label for="regno">Registration No:</label>
@@ -97,57 +97,6 @@
 </form>
 
 </div>
-<script>
-  document.getElementById('signup').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const regNo = parseInt(document.getElementById('regno').value);
-      const fullName = document.getElementById('fullname').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const degree = document.getElementById('degree').value;
-      const contact = document.getElementById('contact').value;
-      const introduction = document.getElementById('introduction').value;
-      const skills = document.getElementById('skills').value;
-      const gpa = parseFloat(document.getElementById('gpa').value);
-
-      const formData = {
-        regno: regNo,
-        fullname: fullName,
-        email: email,
-        password: password,
-        degree: degree,
-        contact: contact,
-        introduction: introduction,
-        skills: skills,
-        gpa: gpa
-      };
-
-      fetch('/sign_up', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.error_msg) {
-          // Display the error message to the user
-          swal.fire(data.error_msg);
-        } 
-          swal.fire("SuccessFully Registered");
-          window.location.href='/login'
-        
-      })
-      .catch(error => {
-        // Handle the error case
-        console.error(error);
-        alert('Some error occurred. Please try again later.');
-      });
-
-    });
-</script>
 
 </body>
 </html>

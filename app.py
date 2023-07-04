@@ -1,19 +1,17 @@
-from flask import Flask, request, render_template, jsonify, json, redirect, url_for
+from flask import Flask, request, render_template, jsonify
 
 import boto3
 
 import dynamoDB_handler as dynamodb
-from urlparse import urlparse, parse_qs
-import urllib2
-
+import urllib.parse
 
 app = Flask(__name__)
 
 
 s3 = boto3.resource(
     's3',
-    #aws_access_key_id     = keys.ACCESS_KEY_ID,
-    #aws_secret_access_key = keys.ACCESS_SECRET_KEY,
+    aws_access_key_id     = keys.ACCESS_KEY_ID,
+    aws_secret_access_key = keys.ACCESS_SECRET_KEY,
     region_name           = 'us-east-1',
 )
 
@@ -147,12 +145,10 @@ def upload():
     )
     # print(email)
     
-    encoded_object_key = urllib2.quote(filename)
-    object_url = "https://{bucket_name}.s3.amazonaws.com/{encoded_object_key}".format(
-    bucket_name=bucket_name,
-    encoded_object_key=encoded_object_key
+    encoded_object_key = urllib.parse.quote(filename)
+    object_url = f"https://{bucket_name}.s3.amazonaws.com/{encoded_object_key}"
     #return "successfully updated"
-    )
+    
     response = dynamodb.update_image_url(email, object_url)
     
     if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
@@ -167,4 +163,4 @@ def upload():
 
 #define port and host
 if __name__ == '__main__':
-    app.run(debug=True,port=8080,host='0.0.0.0')
+    app.run()

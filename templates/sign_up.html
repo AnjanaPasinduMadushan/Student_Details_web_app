@@ -8,6 +8,7 @@
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   <title>Registration Form</title>
   <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     body {
       margin: 20px;
@@ -21,27 +22,29 @@
 <div class='signup_container'>
   
   <center>
-    <h1><a href="/">ETU</a></h1><h1>REGISTRATION</h1></center>
-  <form action="/sign_up" method="POST">
+    <h1><a href="/">ETU</a></h1>
+    <img src='/static/images/logo.png' alt='logo' style="width:40px; height:40px">
+    <h1>REGISTRATION</h1></center>
+  <form method="POST" id='signup'>
   <div class="row">
     <div class="col">
       <label for="regno">Registration No:</label>
-      <input type="number" class="form-control" placeholder="Registration Number" pattern="\d{4}" name="regno" required>
+      <input type="number" class="form-control" placeholder="Registration Number"  min = "1" max='9999' name="regno" id= 'regno' required>
     </div>
     <div class="col">
       <label>Full Name</label>
-      <input type="text" class="form-control" placeholder="Full name" name="fullname" required>
+      <input type="text" class="form-control" placeholder="Full name" name="fullname" id="fullname"  required>
     </div>
     
   </div>
   <div class="row">
     <div class="col">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="Email" name="email" required>
+        <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
     </div>
     <div class="col">
         <label>Password</label>
-        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
     </div>  
   </div>
   
@@ -59,7 +62,7 @@
     
     <div class="col">
         <label>Contact No</label>
-        <input type="tel" class="form-control" placeholder="Contact no" name="contact" required>
+        <input type="tel" class="form-control" placeholder="Contact no" name="contact" id="contact" required>
     </div>
   </div>
   
@@ -94,6 +97,57 @@
 </form>
 
 </div>
+<script>
+  document.getElementById('signup').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const regNo = parseInt(document.getElementById('regno').value);
+      const fullName = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const degree = document.getElementById('degree').value;
+      const contact = document.getElementById('contact').value;
+      const introduction = document.getElementById('introduction').value;
+      const skills = document.getElementById('skills').value;
+      const gpa = parseFloat(document.getElementById('gpa').value);
+
+      const formData = {
+        regno: regNo,
+        fullname: fullName,
+        email: email,
+        password: password,
+        degree: degree,
+        contact: contact,
+        introduction: introduction,
+        skills: skills,
+        gpa: gpa
+      };
+
+      fetch('/sign_up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error_msg) {
+          // Display the error message to the user
+          swal.fire(data.error_msg);
+        } 
+          swal.fire("SuccessFully Registered");
+          window.location.href='/login'
+        
+      })
+      .catch(error => {
+        // Handle the error case
+        console.error(error);
+        alert('Some error occurred. Please try again later.');
+      });
+
+    });
+</script>
 
 </body>
 </html>

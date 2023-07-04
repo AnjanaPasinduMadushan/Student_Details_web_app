@@ -26,7 +26,7 @@
   
   <center>
     <h1><a href="/">ETU</a></h1><h1>STUDENT PROFILE</h1>
-    <img id='profile_pic' src="{{item.image_url}}" style="width: 200px; height: 200px;" alt="Italian Trulli">
+    <img id='profile_pic' src="{{item.image_url}}" style="width: 200px; height: 200px;" alt="my profile picture">
   </center>
   
   </br>
@@ -46,7 +46,7 @@
   <div class="row">
     <div class="col">
       <label for="regno">Registration No:</label>
-      <input type="number" class="form-control" id="regno" placeholder="Registration Number" pattern="\d{4}" name="regno" value={{item.regno}} required>
+      <input type="number" class="form-control" id="regno" placeholder="Registration Number" min = "1" max='9999' name="regno" value={{item.regno}} required>
     </div>
     <div class="col">
       <label>Full Name</label>
@@ -180,6 +180,9 @@
                 });
       
     })
+    
+    
+    
     
   </script>
   

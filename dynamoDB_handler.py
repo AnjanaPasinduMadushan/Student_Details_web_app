@@ -44,28 +44,35 @@ def create_table():
 UserTable = dynamodb_resource.Table('users')#gobal variable for getting the table
 
 # function for adding new students to table
-def add_item_to_user_table(regno, fullname, email, password, degree, contact, introduction, gpa, skills):
+def add_item_to_user_table(data):
     
     response_email = UserTable.query(
-                KeyConditionExpression=Key('email').eq(email)
+                KeyConditionExpression=Key('email').eq(data['email'])
         )
+        
+    response_id = get_item_from_Student_table(data['regno'])
+    
+    if response_id['Items']:
+        existing_id = response_id['Items'][0]['regno']
+        if existing_id == data['regno']:
+            return {'error': "Student already registered with this registratioin number"}
     
     if response_email['Items']:
         existing_email = response_email['Items'][0]['email']
-        if existing_email == email:
+        if existing_email == data['email']:
             return {'error': "This email already exists"}
     
     response = UserTable.put_item(
         Item = {
-            'regno'     : regno,
-            'fullname'  : fullname,
-            'email' : email,
-            'password'  : password,
-            'degree'  : degree,
-            'contact'  : contact,
-            'introduction'  : introduction,
-            'gpa'  : gpa,
-            'skills'  : skills,
+            'regno'     : data['regno'],
+            'fullname'  : data['fullname'],
+            'email' : data['email'],
+            'password'  : data['password'],
+            'degree'  : data['degree'],
+            'contact'  : data['contact'],
+            'introduction'  : data['introduction'],
+            'gpa'  : data['gpa'],
+            'skills'  : data['skills'],
             'image_url': 'null'
         }
     )

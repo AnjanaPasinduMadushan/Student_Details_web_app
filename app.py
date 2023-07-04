@@ -3,9 +3,18 @@ from flask import Flask, request, render_template, jsonify, json
 import boto3
 
 import dynamoDB_handler as dynamodb
+from urllib import parse
 
 
 app = Flask(__name__)
+
+
+s3 = boto3.resource(
+    's3',
+    #aws_access_key_id     = keys.ACCESS_KEY_ID,
+    #aws_secret_access_key = keys.ACCESS_SECRET_KEY,
+    region_name           = 'us-east-1',
+)
 
 @app.route('/')#decorator for home page
 def root_route():
@@ -123,7 +132,25 @@ def get_student(rNo):
             'response': response
         }
     
-
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['std-img']
+    filename = file.filename
+    bucket_name = 'studentimageflaskbucket'
+    bucket = s3.Bucket(bucket_name)
+    bucket.put_object(
+        Key=filename,
+        Body=file,
+        ContentType='image/jpeg',
+        ContentDisposition='inline'
+    )
+    
+    encoded_object_key = urllib.parse.quote(filename)
+    object_url = "https://{bucket_name}.s3.amazonaws.com/{encoded_object_key}".format(
+    bucket_name=bucket_name,
+    encoded_object_key=encoded_object_key
+)
+    return object_url
 
 #define port and host
 if __name__ == '__main__':

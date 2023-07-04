@@ -82,7 +82,14 @@
   </center>
     
 </form>
-  
+  </br>
+  <form id='image-form'>
+  <center>
+  <label for="img">Select a Profile picture:</label>
+  <input type="file" id="img" name="std-img" accept="image/*">
+  <input type="submit" class="btn btn-primary" value="Change">
+  </center>
+  </form>
   <script>
     document.getElementById("std_form").addEventListener('submit', function(e){
       e.preventDefault();
